@@ -1,0 +1,301 @@
+/* Layout Container */
+.admin-dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fafbfc;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.admin-dashboard-layout {
+  height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 280px;
+  background: #ffffff;
+  border-right: 1px solid #edf2f7;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed; /* Absolute alignment anchors */
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sidebar Collapse Control States */
+.sidebar.sidebar-open {
+  transform: translateX(0);
+}
+
+.sidebar.sidebar-closed {
+  transform: translateX(-100%);
+}
+
+.user-profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.avatar-box {
+  width: 80px;
+  height: 80px;
+  background: #e0f2fe;
+  color: #0284c7;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+}
+
+.reg-text {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-top: 5px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.nav-links button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #475569;
+  transition: all 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.nav-links button.active {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: none;
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  margin-top: auto !important; /* Forces logout button to stay anchored to the bottom */
+}
+.logout-btn:hover {
+  background: #fecaca !important;
+}
+
+
+
+/* ========================================================
+   Main Content Workspace Styles — ADAPTIVE LAYOUT FIX
+   ======================================================== */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  margin-left: 0;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Content adjustment state when sidebar is open */
+.main-content.content-shifted-open {
+  margin-left: 280px;
+}
+
+/* Leaves clear space for the floating menu button when sidebar is closed */
+.main-content.content-shifted-closed {
+  padding-left: 80px;
+}
+
+/* Floating Responsive Menu Trigger Button */
+.sidebar-toggle-menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 110;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle-menu-btn:hover {
+  background: #f8fafc;
+  color: #0284c7;
+}
+
+/* Pushes Header Title slightly to the right to prevent overlapping with the fixed toggle button */
+.content-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-left: 55px; 
+}
+
+.back-btn {
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Form Styles */
+.field-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  max-width: 1200px; /* Prevents the content grids from looking overly stretched on widescreen viewports */
+  width: 100%;
+  box-sizing: border-box;
+  transition: max-width 0.3s ease;
+}
+
+/* New Job Tab Grid */
+.vertical-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Profile Tab Vertical Stack */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px; /* Keeps form components neat and compact */
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.blue-action-btn {
+  background-color: #0284c7 !important;
+  color: white !important;
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.cancel-btn {
+  padding: 10px 25px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.cancel-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Table Styles */
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.job-table th {
+  background: #f8fafc;
+  padding: 15px;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #64748b;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.job-table td {
+  padding: 15px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.9rem;
+  color: #1e293b;
+}
+
+.action-btns { display: flex; gap: 8px; }
+.edit-btn { background: #dbeafe; color: #2563eb; border: none; padding: 6px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; }
+.delete-btn { background: #fee2e2; color: #dc2626; border: none; padding: 6px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; }
+.edit-btn:hover { background: #bfdbfe; }
+.delete-btn:hover { background: #fecaca; }
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .vertical-form {
+    grid-template-columns: 1fr; /* Switch automatically to single column if viewport changes space */
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 85px 20px 40px 20px !important;
+  }
+  .main-content.content-shifted-open {
+    margin-left: 0 !important;
+  }
+}
