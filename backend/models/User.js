@@ -3,26 +3,16 @@ const bcrypt = require("bcryptjs");
 
 const UserSchema = new mongoose.Schema({
   fullName: { type: String, required: true, trim: true },
-  
-  // employeeId is now critical as the "username" for logging in
-  employeeId: { type: String, required: true, unique: true, trim: true }, 
-  
+  // sparse: true allows multiple "null" values for unique fields
+  employeeId: { type: String, unique: true, sparse: true }, 
   email: { type: String, required: true, unique: true, lowercase: true },
   password: { type: String, required: true },
 
-  // Role management for Admin vs Engineer
   role: {
     type: String,
-    enum: ["admin", "engineer"],
-    default: "engineer",
+    enum: ["admin", "engineer", "ops"],
+    default: "ops", // Default to 'ops' if frontend doesn't send it
     required: true,
-  },
-
-  // Division field: Crucial for your filter requirement
-  // Options will be "Division 1", "Division 2", ... "Division 8"
-  division: { 
-    type: String, 
-    required: function() { return this.role === 'engineer'; } 
   },
 
   attributes: {
@@ -32,7 +22,7 @@ const UserSchema = new mongoose.Schema({
     unitId: String,
   },
 
-  // Recovery fields
+  // Added recovery fields from your frontend
   recoveryQuestion: { type: String },
   recoveryAnswer: { type: String },
 
@@ -42,23 +32,25 @@ const UserSchema = new mongoose.Schema({
   isVerified: { type: Boolean, default: false },
 }, { timestamps: true });
 
-// Password Hashing Middleware
-UserSchema.pre("save", async function (next) {
-  // If the password hasn't been changed, skip hashing
-  if (!this.isModified("password")) return next();
+// CORRECTED: Password Hashing Middleware (Async Version)
+UserSchema.pre("save", async function () {
+  // If the password hasn't been changed, don't re-hash it
+  if (!this.isModified("password")) return;
 
   try {
     const salt = await bcrypt.genSalt(12);
     this.password = await bcrypt.hash(this.password, salt);
-    next();
+    // In async pre-save hooks, we do NOT call next(). 
+    // Simply returning or finishing execution proceeds with the save.
   } catch (err) {
-    next(err);
+    // Throwing an error will stop the save and trigger the catch block in your controller
+    throw err;
   }
 });
 
 // Password Comparison Method
-UserSchema.methods.comparePassword = async function (candidatePassword) {
-  return await bcrypt.compare(candidatePassword, this.password);
+UserSchema.methods.comparePassword = function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
 };
 
 module.exports = mongoose.model("User", UserSchema);

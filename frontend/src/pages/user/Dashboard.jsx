@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './Dashboard.css';
-import { User, Briefcase, RefreshCw, Settings, ArrowLeft, Send, Calendar, Save, Edit3, Camera, LogOut, Menu } from 'lucide-react';
+import { User, Briefcase, RefreshCw, Settings, ArrowLeft, Send, Calendar, Save, Edit3, Camera, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const UserDashboard = ({ isDark }) => {
@@ -8,9 +8,6 @@ const UserDashboard = ({ isDark }) => {
   const dateInputRef = useRef(null);
   const fileInputRef = useRef(null);
   const [activeTab, setActiveTab] = useState('my-jobs');
-
-  // Collapsible Sidebar visibility control state variable
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   
   const [selectedJobId, setSelectedJobId] = useState('');
   const [visitDate, setVisitDate] = useState('');
@@ -162,18 +159,8 @@ const UserDashboard = ({ isDark }) => {
 
   return (
     <div id="cems-user-dashboard" className={isDark ? 'dark-mode' : 'light-mode'}>
-
-      {/* Floating Hamburger Button */}
-      <button
-        className="sidebar-toggle-menu-btn"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        title={isSidebarOpen ? "Collapse Menu" : "Expand Menu"}
-      >
-        <Menu size={20} />
-      </button>
-
       <div className="dashboard-container">
-        <aside className={`sidebar ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+        <aside className="sidebar">
           <div className="profile-box">
             <div className="profile-photo" style={{ overflow: 'hidden' }}>
               {profilePic ? <img src={profilePic} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <User size={48} />}
@@ -216,7 +203,7 @@ const UserDashboard = ({ isDark }) => {
           </nav>
         </aside>
 
-        <main className={`dashboard-content ${isSidebarOpen ? 'content-shifted-open' : 'content-shifted-closed'}`}>
+        <main className="dashboard-content">
           <header className="content-header">
             <div className="header-left">    
             </div>
