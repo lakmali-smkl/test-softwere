@@ -1,0 +1,508 @@
+
+
+/* Import Inter for professional typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
+
+:root {
+  --primary-purple: #9333ea;
+  --bg-slate: #f8fafc;
+  --text-main: #0f172a;
+  --light-purple-bg: #f5f3ff;
+  --purple-border: #ddd6fe;
+  /* Updated colors for refined professional look */
+  --input-bg: #ffffff;
+  --input-bg-tint: #fcfaff; /* Soft purple-tinted white for inputs */
+  --input-border: #e2e8f0;
+  --text-muted: #64748b;
+}
+
+#cems-user-dashboard {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-slate);
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* --- Sidebar Styling --- */
+.sidebar {
+  width: 280px;
+  background: white;
+  border-right: 1px solid var(--input-border);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-box {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.profile-photo {
+  width: 80px;
+  height: 80px;
+  background: var(--light-purple-bg);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: var(--primary-purple);
+}
+
+.sidebar-nav .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sidebar-nav .nav-item.active {
+  background: var(--light-purple-bg);
+  color: var(--primary-purple);
+}
+
+/* --- Main Content Area --- */
+.dashboard-content {
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+
+.content-header {
+  margin-bottom: 2rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.back-arrow-icon {
+  background: white;
+  border: 1px solid var(--input-border);
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+/* --- Table Card Design --- */
+.project-table {
+  width: 100%;
+  background: white;
+  border-radius: 2rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.project-table th {
+  background: var(--bg-slate);
+  padding: 1.5rem;
+  text-align: left;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+.project-table td {
+  padding: 1.5rem;
+  border-top: 1px solid var(--input-border);
+}
+
+/* --- Update Progress Cards & Inputs --- */
+.form-rectangles {
+  display: grid;
+  gap: 2rem;
+  max-width: 600px;
+}
+
+.info-rectangle, .input-rectangle {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--input-border);
+}
+
+/* Updated Select Dropdown */
+.job-select-dropdown {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--purple-border);
+  background-color: #ffffff !important;
+  color: var(--text-main) !important;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Updated Input Fields with Forced Visibility */
+.hybrid-date-input, 
+.input-group input[type="number"],
+.input-group input[type="text"],
+.input-group input[type="date"],
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--purple-border) !important;
+  background-color: #ffffff !important;
+  color: var(--text-main) !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: block;
+}
+
+/* Neutralize Browser Autofill Black Background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+  -webkit-text-fill-color: var(--text-main) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.hidden-date {
+  opacity: 0 !important;
+  position: absolute !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+/* Focused state: Stronger purple border */
+.hybrid-date-input:focus, 
+.input-group input:focus,
+.input-field:focus {
+  border-color: var(--primary-purple) !important;
+  background-color: #ffffff !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+}
+
+.input-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-send {
+  background: var(--primary-purple);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-send:hover {
+  opacity: 0.9;
+}
+
+/* --- Professional Colorful Button Styling --- */
+
+/* Style for Save Changes button */
+.save-btn {
+  background-color: var(--primary-purple) !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.save-btn:hover {
+  background-color: #7e22ce !important; /* Darker purple */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(147, 51, 234, 0.3);
+}
+
+/* Style for Submit Estimate button */
+.send-btn {
+  background-color: #10b981 !important; /* Emerald Green */
+  color: white !important;
+  padding: 12px 24px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.send-btn:hover {
+  background-color: #059669 !important; /* Darker green */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+/* --- Centering Instruction Text --- */
+.instruction-text {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+
+/* --- Layout for Two Boxes --- */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 600px;
+}
+
+.field-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--input-border);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* --- Colorful Buttons --- */
+.save-btn {
+  background-color: var(--primary-purple) !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.send-btn {
+  background-color: #10b981 !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Bold all field labels */
+.input-group label {
+  font-weight: 900 !important;
+  color: var(--text-main) !important;
+}
+
+/* Targeted bolding for specific field labels */
+.field-card label {
+  font-weight: 900 !important;
+  color: #0f172a !important;
+}
+
+.selection-area {
+  margin-bottom: 30px; /* Add this line */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Keeps the label and dropdown spaced nicely */
+}
+
+/* --- Profile Section Styling --- */
+.profile-view .form-container {
+  max-width: 500px;
+}
+
+.profile-photo-edit {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--light-purple-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-purple);
+  margin-bottom: 20px;
+  border: 2px solid var(--purple-border);
+}
+
+.camera-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--primary-purple);
+  color: white;
+  border-radius: 50%;
+  padding: 8px;
+  border: 2px solid white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.camera-btn:hover {
+  transform: scale(1.1);
+}
+
+.input-row-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-row-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--text-main);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures the container takes full height */
+}
+
+.logout-nav-item:hover {
+  background-color: #fee2e2;
+}
+
+/* --- Hybrid Date Wrapper with Calendar Button --- */
+.hybrid-date-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+.hybrid-date-wrapper .input-field {
+  flex: 1;
+  border-radius: 12px 0 0 12px;
+  margin: 0;
+}
+
+.cal-btn {
+  padding: 12px 16px;
+  background-color: white;
+  border: 1px solid var(--purple-border);
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.cal-btn:hover {
+  background-color: var(--light-purple-bg);
+  color: var(--primary-purple);
+}
+
+/* ========================================================
+   ADDITIVE: Collapsible Sidebar Toggle
+   ======================================================== */
+
+.dashboard-container {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar.sidebar-open {
+  transform: translateX(0);
+}
+
+.sidebar.sidebar-closed {
+  transform: translateX(-100%);
+}
+
+.dashboard-content {
+  margin-left: 0;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+  box-sizing: border-box;
+}
+
+.dashboard-content.content-shifted-open {
+  margin-left: 280px;
+}
+
+.dashboard-content.content-shifted-closed {
+  padding-left: 80px;
+}
+
+.sidebar-toggle-menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 110;
+  background: #ffffff;
+  border: 1px solid var(--input-border);
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle-menu-btn:hover {
+  background: var(--light-purple-bg);
+  color: var(--primary-purple);
+}
+
+@media (max-width: 768px) {
+  .dashboard-content.content-shifted-open {
+    margin-left: 0 !important;
+  }
+}
